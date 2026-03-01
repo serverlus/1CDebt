@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.1/data/form"
+      xmlns:core="http://v8.1c.ru/8.1/data/core"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Attributes>
+    <Attribute xsi:type="FormAttribute">
+      <Name>ДатаАнализа</Name>
+      <TypeDescription>
+        <core:Type>xs:dateTime</core:Type>
+      </TypeDescription>
+      <Title>Дата анализа</Title>
+    </Attribute>
+    <Attribute xsi:type="FormAttribute">
+      <Name>ТаблицаСкоринга</Name>
+      <TypeDescription>
+        <core:Type>ValueTable</core:Type>
+      </TypeDescription>
+      <Title>Скоринг контрагентов</Title>
+      <Columns>
+        <Column>
+          <Name>НаименованиеКонтрагента</Name>
+          <TypeDescription><core:Type>xs:string</core:Type></TypeDescription>
+          <Title>Контрагент</Title>
+        </Column>
+        <Column>
+          <Name>ИНН</Name>
+          <TypeDescription><core:Type>xs:string</core:Type></TypeDescription>
+          <Title>ИНН</Title>
+        </Column>
+        <Column>
+          <Name>СуммаДолга</Name>
+          <TypeDescription><core:Type>xs:decimal</core:Type></TypeDescription>
+          <Title>Долг, руб.</Title>
+        </Column>
+        <Column>
+          <Name>СуммаПросрочки</Name>
+          <TypeDescription><core:Type>xs:decimal</core:Type></TypeDescription>
+          <Title>Просрочка, руб.</Title>
+        </Column>
+        <Column>
+          <Name>МаксДнейПросрочки</Name>
+          <TypeDescription><core:Type>xs:decimal</core:Type></TypeDescription>
+          <Title>Макс. дней</Title>
+        </Column>
+        <Column>
+          <Name>Балл</Name>
+          <TypeDescription><core:Type>xs:decimal</core:Type></TypeDescription>
+          <Title>Балл</Title>
+        </Column>
+        <Column>
+          <Name>Категория</Name>
+          <TypeDescription><core:Type>xs:string</core:Type></TypeDescription>
+          <Title>Категория</Title>
+        </Column>
+      </Columns>
+    </Attribute>
+    <Attribute xsi:type="FormAttribute">
+      <Name>ТекстРасшифровки</Name>
+      <TypeDescription>
+        <core:Type>xs:string</core:Type>
+      </TypeDescription>
+      <Title>Расшифровка</Title>
+    </Attribute>
+  </Attributes>
+
+  <Items>
+    <!-- Шапка: панель с датой и кнопками -->
+    <Item xsi:type="FormGroup" name="ГруппаШапка">
+      <Type>UsualGroup</Type>
+      <Title>Панель управления</Title>
+      <Items>
+        <Item xsi:type="FormField" name="ДатаАнализа">
+          <Type>InputField</Type>
+          <DataPath>ДатаАнализа</DataPath>
+          <Title>Дата анализа</Title>
+          <Width>12</Width>
+        </Item>
+        <Item xsi:type="FormButton" name="КнопкаОбновить">
+          <CommandName>КомандаОбновить</CommandName>
+          <Title>Обновить</Title>
+        </Item>
+        <Item xsi:type="FormButton" name="КнопкаВыгрузитьExcel">
+          <CommandName>КомандаВыгрузитьExcel</CommandName>
+          <Title>Выгрузить в Excel</Title>
+        </Item>
+      </Items>
+    </Item>
+
+    <!-- Легенда категорий -->
+    <Item xsi:type="FormGroup" name="ГруппаЛегенда">
+      <Type>UsualGroup</Type>
+      <Title>Категории риска</Title>
+      <Items>
+        <Item xsi:type="FormDecoration" name="ЛегендаA">
+          <Type>Label</Type>
+          <Title>■ A (80–100) — Надёжный</Title>
+          <TextColor>0,180,0</TextColor>
+        </Item>
+        <Item xsi:type="FormDecoration" name="ЛегендаB">
+          <Type>Label</Type>
+          <Title>■ B (60–79) — Умеренный риск</Title>
+          <TextColor>200,160,0</TextColor>
+        </Item>
+        <Item xsi:type="FormDecoration" name="ЛегендаC">
+          <Type>Label</Type>
+          <Title>■ C (40–59) — Высокий риск</Title>
+          <TextColor>220,100,0</TextColor>
+        </Item>
+        <Item xsi:type="FormDecoration" name="ЛегендаD">
+          <Type>Label</Type>
+          <Title>■ D (0–39) — Критичный</Title>
+          <TextColor>200,0,0</TextColor>
+        </Item>
+      </Items>
+    </Item>
+
+    <!-- Основная таблица скоринга -->
+    <Item xsi:type="FormTable" name="ТаблицаСкоринга">
+      <DataPath>ТаблицаСкоринга</DataPath>
+      <Title>Скоринг контрагентов</Title>
+      <Height>15</Height>
+      <CommandBarLocation>Top</CommandBarLocation>
+      <Items>
+        <Item xsi:type="FormField" name="НаименованиеКонтрагента">
+          <Type>InputField</Type>
+          <DataPath>ТаблицаСкоринга.НаименованиеКонтрагента</DataPath>
+          <Title>Контрагент</Title>
+          <Width>30</Width>
+        </Item>
+        <Item xsi:type="FormField" name="ИНН">
+          <Type>InputField</Type>
+          <DataPath>ТаблицаСкоринга.ИНН</DataPath>
+          <Title>ИНН</Title>
+          <Width>12</Width>
+        </Item>
+        <Item xsi:type="FormField" name="СуммаДолга">
+          <Type>InputField</Type>
+          <DataPath>ТаблицаСкоринга.СуммаДолга</DataPath>
+          <Title>Долг, руб.</Title>
+          <Width>14</Width>
+        </Item>
+        <Item xsi:type="FormField" name="СуммаПросрочки">
+          <Type>InputField</Type>
+          <DataPath>ТаблицаСкоринга.СуммаПросрочки</DataPath>
+          <Title>Просрочка, руб.</Title>
+          <Width>14</Width>
+        </Item>
+        <Item xsi:type="FormField" name="МаксДнейПросрочки">
+          <Type>InputField</Type>
+          <DataPath>ТаблицаСкоринга.МаксДнейПросрочки</DataPath>
+          <Title>Макс. дн.</Title>
+          <Width>8</Width>
+        </Item>
+        <Item xsi:type="FormField" name="Балл">
+          <Type>InputField</Type>
+          <DataPath>ТаблицаСкоринга.Балл</DataPath>
+          <Title>Балл</Title>
+          <Width>6</Width>
+        </Item>
+        <Item xsi:type="FormField" name="Категория">
+          <Type>InputField</Type>
+          <DataPath>ТаблицаСкоринга.Категория</DataPath>
+          <Title>Риск</Title>
+          <Width>5</Width>
+        </Item>
+      </Items>
+    </Item>
+
+    <!-- Расшифровка выделенного контрагента -->
+    <Item xsi:type="FormField" name="ТекстРасшифровки">
+      <Type>TextBox</Type>
+      <DataPath>ТекстРасшифровки</DataPath>
+      <Title>Расшифровка скоринга</Title>
+      <Height>7</Height>
+      <ReadOnly>true</ReadOnly>
+    </Item>
+  </Items>
+
+  <Commands>
+    <Command name="КомандаОбновить">
+      <Action>КомандаОбновить</Action>
+      <Title>Обновить</Title>
+    </Command>
+    <Command name="КомандаВыгрузитьExcel">
+      <Action>КомандаВыгрузитьExcel</Action>
+      <Title>Выгрузить в Excel</Title>
+    </Command>
+  </Commands>
+</Form>
