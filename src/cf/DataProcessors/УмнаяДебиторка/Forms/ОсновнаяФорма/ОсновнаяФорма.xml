@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<MetaDataObject xmlns="http://v8.1c.ru/8.3/MDClasses"
+                xmlns:xr="http://v8.1c.ru/8.3/xcf/readable"
+                version="2.16.0">
+  <Form uuid="e4f5a6b7-c8d9-4e0f-a1b2-c3d4e5f60004">
+    <Name>ОсновнаяФорма</Name>
+    <Synonym>
+      <key>ru</key>
+      <value>Умная Дебиторка</value>
+    </Synonym>
+    <ObjectBelonging>Own</ObjectBelonging>
+    <FormType>Ordinary</FormType>
+    <UsePurposes>
+      <xr:Item>PlatformApplication</xr:Item>
+      <xr:Item>MobileSmartPhone</xr:Item>
+    </UsePurposes>
+  </Form>
+</MetaDataObject>
